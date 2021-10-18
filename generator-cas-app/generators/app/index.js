@@ -53,6 +53,12 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "localDbUser",
+        message: "Local database user (for dev environment)",
+        default: "postgres",
+      },
+      {
+        type: "input",
         name: "schemaName",
         message: "Database schema name",
         default: (answers) => answers.projectName,
@@ -125,6 +131,11 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath(".*"),
       this.destinationPath("."),
+      templateVars
+    );
+    this.fs.copyTpl(
+      this.templatePath("app/.*"),
+      this.destinationPath("app/."),
       templateVars
     );
   }
