@@ -15,7 +15,7 @@ const allowCypressForRole = (roleName, req) => {
 };
 
 const authenticationPgSettings = (req) => {
-<% roles.forEach((role, index) => { %>
+<% authenticatedRoles.forEach((role, index) => { %>
   if (AS_<%- role.toUpperCase() %> || allowCypressForRole("<%- role %>", req)) {
     return {
       "jwt.claims.sub": "<%- '00000000-0000-0000-0000-00000000000' + index %>",
