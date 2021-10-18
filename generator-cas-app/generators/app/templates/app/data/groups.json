@@ -1,32 +1,29 @@
 {
   "Guest": {
-    "pgRole": "ciip_guest",
+    "pgRole": "<%- guestRole %>",
     "priority": 100,
     "path": "/"
   },
-  "User": {
-    "pgRole": "ciip_industry_user",
-    "priority": 10,
-    "path": "/reporter"
-  },
   "Realm Administrator": {
-    "pgRole": "ciip_administrator",
+    "pgRole": "<%- adminRole %>",
     "priority": 0,
     "path": "/admin"
   },
-  "Incentive Administrator": {
-    "pgRole": "ciip_administrator",
-    "priority": 1,
-    "path": "/admin"
+  "NON_IDIR_USER": {
+    "pgRole": "your_external_user_role",
+    "priority": 10,
+    "path": "/your_external_user_role"
   },
-  "Incentive Analyst": {
-    "pgRole": "ciip_analyst",
-    "priority": 2,
-    "path": "/analyst"
+  "UNAUTHORIZED_IDIR_USER": {
+    "pgRole": "<%- guestRole %>",
+    "priority": 50,
+    "path": "/unauthorized_idir"
   },
-  "Pending Analyst": {
-    "pgRole": "ciip_guest",
-    "priority": 3,
-    "path": "/analyst/pending"
-  }
+<% authenticatedRoles.forEach((role, index) => { %>
+  "<%- role %>": {
+    "pgRole": "<%- role %>",
+    "priority": 0,
+    "path": "/<%- role %>"
+  }<%- index < authenticatedRoles.length - 1 ? ',' : '' %>
+<% }) %>
 }

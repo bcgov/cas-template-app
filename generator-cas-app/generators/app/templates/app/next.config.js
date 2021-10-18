@@ -22,9 +22,6 @@ module.exports = {
     return configWithPlugins;
   },
   publicRuntimeConfig: {
-    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
-    SUPPORT_EMAIL: process.env.SUPPORT_EMAIL,
-    ENABLE_ANALYTICS: process.env.ENABLE_ANALYTICS,
     SITEWIDE_NOTICE: process.env.SITEWIDE_NOTICE,
     ENABLE_DB_MOCKS: process.env.ENABLE_DB_MOCKS,
   },
