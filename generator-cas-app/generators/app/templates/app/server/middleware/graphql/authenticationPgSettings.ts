@@ -3,7 +3,7 @@ import { getUserGroups } from "../../helpers/userGroupAuthentication";
 import groupData from "../../../data/groups.json";
 
 const AUTH_BYPASS_COOKIE = "mocks.auth";
-<% roles.forEach(role => { %>
+<% authenticatedRoles.forEach(role => { %>
 const AS_<%- role.toUpperCase() %> = process.argv.includes("AS_<%- role.toUpperCase() %>");
 <% }) %>
 
