@@ -9,7 +9,7 @@
     "dev": "nodemon",
     "predev": "yarn run build:schema && yarn run build:relay",
     "build": "yarn run build:schema && yarn run build:relay && yarn run build:next",
-    "build:schema": "postgraphile -X -c postgres://localhost/test_app -s test_app --export-schema-graphql server/schema.graphql --export-schema-json server/schema.json --classic-ids --sort-export && echo >> server/schema.json",
+    "build:schema": "postgraphile -X -c postgres://localhost/<%- dbName %> -s <%- schemaName %> --export-schema-graphql server/schema.graphql --export-schema-json server/schema.json --classic-ids --sort-export && echo >> server/schema.json",
     "build:relay": "relay-compiler --verbose"
   },
   "devDependencies": {

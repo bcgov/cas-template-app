@@ -118,14 +118,16 @@ module.exports = class extends Generator {
     const nonAdminRoles = this.answers.nonAdminRoles.split(",");
     const { adminRole, guestRole, projectName } = this.answers;
     const userTable = `${projectName}_user`;
+    const camelCaseUserTable = camelCase(userTable);
     const templateVars = {
       ...this.answers,
       authenticatedRoles: [...nonAdminRoles, adminRole],
       roles: [...nonAdminRoles, adminRole, guestRole],
       nonAdminRoles,
       userTable,
-      camelCaseUserTable: camelCase(userTable),
-      pascalCaseUserTable: capitalize(camelCase(userTable)),
+      camelCaseUserTable,
+      pascalCaseUserTable:
+        capitalize(camelCaseUserTable[0]) + camelCaseUserTable.slice(1),
     };
 
     this.fs.copyTpl(

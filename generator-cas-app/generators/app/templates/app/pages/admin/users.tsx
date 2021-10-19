@@ -29,7 +29,7 @@ function Users({ preloadedQuery }: RelayProps<{}, usersQuery>) {
   return (
     <DefaultLayout session={query.session}>
       <ul>
-        {query.allTestAppUsers.edges.map(({ node }) => (
+        {query.all<%- pascalCaseUserTable %>s.edges.map(({ node }) => (
           <li key={node.id}>
             {node.firstName} {node.lastName}
           </li>

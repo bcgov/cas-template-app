@@ -70,7 +70,7 @@ app.prepare().then(async () => {
   // Keycloak instantiation for dev/test/prod
   const kcConfig = {
     realm: "pisrwwhx",
-    "auth-server-url": `https://dev-oidc.gov.bc.ca/auth`,
+    "auth-server-url": `https://dev.oidc.gov.bc.ca/auth`,
     "ssl-required": "external",
     resource: "cas-ciip-portal",
     "public-client": true,

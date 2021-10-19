@@ -33,6 +33,7 @@ function Index({ preloadedQuery }: RelayProps<{}, pagesQuery>) {
 export default withRelay(Index, IndexQuery, {
   ...withRelayOptions,
   serverSideProps: async (ctx) => {
+    // Server-side redirection of the user to their landing route, if they are logged in
     const groups = getUserGroups(ctx.req);
     const landingRoute = getUserGroupLandingRoute(groups);
     if (landingRoute === "/") return {};
