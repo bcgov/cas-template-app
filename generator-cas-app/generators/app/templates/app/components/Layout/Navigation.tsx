@@ -14,7 +14,7 @@ interface Props {
 
 const Navigation: React.FC<Props> = ({
   isLoggedIn = false,
-  title = "Test App",
+  title = "<%- projectName %>",
   userProfileDropdown,
 }) => {
   let rightSide = isLoggedIn ? (

@@ -63,7 +63,7 @@ class MyDocument extends Document<DocumentProps> {
           <link rel="icon" href="/icons/bcid-favicon-32x32.png" />
           <relayDocument.Script />
         </Head>
-        <title>test_app</title>
+        <title><%= projectName %></title>
         <body>
           <Main />
           <NextScript />
