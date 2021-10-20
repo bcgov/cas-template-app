@@ -55,12 +55,6 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
-        name: "localDbUser",
-        message: "Local database user (for dev environment)",
-        default: "postgres",
-      },
-      {
-        type: "input",
         name: "schemaName",
         message: "Database schema name",
         default: (answers) => answers.projectName,

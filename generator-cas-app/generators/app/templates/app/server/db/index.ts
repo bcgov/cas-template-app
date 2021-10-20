@@ -8,7 +8,7 @@ import pg from "pg";
 const getDatabaseUrl = () => {
   // If authentication is disabled use the user above to connect to the database
   // Otherwise, use the PGUSER env variable
-  const PGUSER = process.env.PGUSER || "<%- localDbUser %>";
+  const PGUSER = process.env.PGUSER || "postgres";
 
   let databaseURL = "postgres://";
 
