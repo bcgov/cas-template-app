@@ -6,7 +6,7 @@ import getConfig from "next/config";
 import Navigation from "components/Layout/Navigation";
 import Footer from "components/Layout/Footer";
 import SiteNoticeBanner from "components/Layout/SiteNoticeBanner";
-import UserProfileDropdown from "./UserProfileDropdown";
+import UserProfileDropdown from "components/User/UserProfileDropdown";
 
 const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 
