@@ -20,23 +20,11 @@ const Navigation: React.FC<Props> = ({
   let rightSide = isLoggedIn ? (
     userProfileDropdown
   ) : (
-    <>
-      <Button
-        style={{
-          marginTop: "auto",
-          marginBottom: "auto",
-          marginRight: "5px",
-        }}
-        variant="secondary-inverse"
-      >
-        Register
+    <LoginForm>
+      <Button variant="secondary-inverse" type="submit">
+        Login
       </Button>
-      <LoginForm>
-        <Button variant="secondary-inverse" type="submit">
-          Login
-        </Button>
-      </LoginForm>
-    </>
+    </LoginForm>
   );
   return (
     <>

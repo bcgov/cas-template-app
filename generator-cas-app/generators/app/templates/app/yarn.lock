@@ -550,6 +550,14 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
+"@bcgov-cas/sso-express@^1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@bcgov-cas/sso-express/-/sso-express-1.0.0-alpha.3.tgz#c084a7502577ae449aa63b691f30fdc4e8bf49c4"
+  integrity sha512-OjxB0l+d8iux82klzbj3t2L3vYJLKtZOiGukQuPn/W51glYrK0D/Ucje/3Cu2jB/tefWKB3Y003R+7mFB9NE4w==
+  dependencies:
+    express "^4.17.1"
+    keycloak-connect "^15.0.2"
+
 "@bcgov/bc-sans@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@bcgov/bc-sans/-/bc-sans-1.0.1.tgz#8b622032465463934319771ea92fa3df74e6c9d3"
