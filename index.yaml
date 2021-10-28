@@ -3,6 +3,17 @@ entries:
   nginx-sidecar:
   - apiVersion: v2
     appVersion: 1.20.1
+    created: "2021-10-28T23:53:14.538200623Z"
+    description: A helm chart that can be used to inject an nginx sidecar pod to handle
+      SSL termination
+    digest: 276495c57b21a150c61c7870dc63c46a6b4384dcf328291036f09145c9668315
+    name: nginx-sidecar
+    type: application
+    urls:
+    - https://github.com/bcgov/cas-template-app/releases/download/nginx-sidecar-0.1.8/nginx-sidecar-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 1.20.1
     created: "2021-10-25T23:58:33.031011636Z"
     description: A helm chart that can be used to inject an nginx sidecar pod to handle
       SSL termination
@@ -78,4 +89,4 @@ entries:
     urls:
     - https://github.com/bcgov/cas-template-app/releases/download/nginx-sidecar-0.1.1/nginx-sidecar-0.1.1.tgz
     version: 0.1.1
-generated: "2021-10-25T23:58:33.031039237Z"
+generated: "2021-10-28T23:53:14.538420532Z"
