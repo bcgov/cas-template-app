@@ -1,6 +1,8 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
+const camelCase = require("lodash.camelcase");
+const capitalize = require("lodash.capitalize");
 
 module.exports = class extends Generator {
   async prompting() {
@@ -109,12 +111,17 @@ module.exports = class extends Generator {
   writing() {
     const nonAdminRoles = this.answers.nonAdminRoles.split(",");
     const { adminRole, guestRole, projectName } = this.answers;
+    const userTable = `${projectName}_user`;
+    const camelCaseUserTable = camelCase(userTable);
     const templateVars = {
       ...this.answers,
       authenticatedRoles: [...nonAdminRoles, adminRole],
       roles: [...nonAdminRoles, adminRole, guestRole],
       nonAdminRoles,
-      userTable: `${projectName}_user`,
+      userTable,
+      camelCaseUserTable,
+      pascalCaseUserTable:
+        capitalize(camelCaseUserTable[0]) + camelCaseUserTable.slice(1),
     };
 
     this.fs.copyTpl(
@@ -125,6 +132,11 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath(".*"),
       this.destinationPath("."),
+      templateVars
+    );
+    this.fs.copyTpl(
+      this.templatePath("app/.*"),
+      this.destinationPath("app/."),
       templateVars
     );
   }

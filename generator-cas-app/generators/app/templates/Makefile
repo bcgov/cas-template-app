@@ -45,7 +45,7 @@ install_pgtap:
 .PHONY: install_cpanm
 install_cpanm: ## install the cpanm tool
 install_cpanm:
-ifeq ($(shell which $(word 1,$(CPANM))),)
+ifeq ($(shell which $(word 2,$(CPANM))),)
 	# install cpanm
 	@$(CPAN) App::cpanminus
 endif
@@ -116,6 +116,21 @@ deploy_db_migrations: start_pg create_db
 deploy_db_migrations:
 	@$(SQITCH) --chdir schema deploy
 	@$(SQITCH) --chdir mocks_schema deploy
+
+deploy_dev_data: ## deploy the database migrations with sqitch and load the data for local development
+deploy_dev_data: deploy_db_migrations
+deploy_dev_data:
+	@for file in $(__DIRNAME)/schema/data/dev/*; do \
+		$(PSQL) -d $(DB_NAME) -f "$${file}"; \
+	done;
+
+deploy_prod_data: ## deploy the database migrations with sqitch and load the production data
+deploy_prod_data: deploy_db_migrations
+deploy_prod_data:
+	@for file in $(__DIRNAME)/schema/data/prod/*; do \
+		$(PSQL) -d $(DB_NAME) -f "$${file}"; \
+	done;
+
 
 .PHONY: revert_db_migrations
 revert_db_migrations: ## revert the database migrations with sqitch

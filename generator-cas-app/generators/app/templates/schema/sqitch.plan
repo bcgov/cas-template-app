@@ -21,3 +21,4 @@ trigger_functions/update_timestamps <%- changeDateAuthor %> # Create the <%- sch
 util_functions/upsert_timestamp_columns [schemas/private trigger_functions/update_timestamps] <%- changeDateAuthor %> # Create the upsert_timestamp_columns function
 tables/<%- userTable %> <%- changeDateAuthor %> # Create the <%- schemaName %>.<%- userTable %> table
 trigger_functions/set_user_id <%- changeDateAuthor %> # Create the <%- schemaName %>_private.set_user_id trigger function
+mutations/create_user_from_session <%- changeDateAuthor %> # Create the <%- schemaName %>.create_user_from_session mutation function

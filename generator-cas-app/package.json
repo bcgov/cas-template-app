@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.capitalize": "^4.2.1",
     "mem-fs": "^2.2.1",
     "mem-fs-editor": "^9.3.0",
     "yeoman-environment": "^3.6.0",

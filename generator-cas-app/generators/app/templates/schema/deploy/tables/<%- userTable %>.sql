@@ -13,6 +13,7 @@ create table <%- schemaName %>.<%- userTable %>
 select <%- schemaName %>_private.upsert_timestamp_columns('<%- schemaName %>', '<%- userTable %>');
 
 create unique index <%- userTable %>_uuid on <%- schemaName %>.<%- userTable %>(uuid);
+create unique index <%- userTable %>_email_address on <%- schemaName %>.<%- userTable %>(email_address);
 
 do
 $grant$

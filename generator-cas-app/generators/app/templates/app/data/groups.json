@@ -1,0 +1,29 @@
+{
+  "Guest": {
+    "pgRole": "<%- guestRole %>",
+    "priority": 100,
+    "path": "/"
+  },
+  "Realm Administrator": {
+    "pgRole": "<%- adminRole %>",
+    "priority": 0,
+    "path": "/admin"
+  },
+  "NON_IDIR_USER": {
+    "pgRole": "your_external_user_role",
+    "priority": 10,
+    "path": "/your_external_user_role"
+  },
+  "UNAUTHORIZED_IDIR_USER": {
+    "pgRole": "<%- guestRole %>",
+    "priority": 50,
+    "path": "/unauthorized_idir"
+  },
+<% authenticatedRoles.forEach((role, index) => { %>
+  "<%- role %>": {
+    "pgRole": "<%- role %>",
+    "priority": 0,
+    "path": "/<%- role %>"
+  }<%- index < authenticatedRoles.length - 1 ? ',' : '' %>
+<% }) %>
+}
