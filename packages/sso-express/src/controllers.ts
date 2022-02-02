@@ -3,6 +3,8 @@ import { BaseClient, generators, TokenSet } from "openid-client";
 import { getSessionRemainingTime, isAuthenticated } from "./helpers";
 import { SSOExpressOptions } from "./index";
 
+const code_verifier = generators.codeVerifier();
+
 const shouldBypassAuthentication = (bypassConfig, routeKey) => {
   return (
     bypassConfig && // will fail if 'null' (which has the type object)
@@ -88,8 +90,11 @@ export const loginController =
 
     const state = generators.random(32);
     req.session.oidcState = state;
+    const code_challenge = generators.codeChallenge(code_verifier);
     const authUrl = client.authorizationUrl({
       state,
+      code_challenge,
+      code_challenge_method: "S256",
     });
     res.redirect(authUrl);
   };
@@ -114,6 +119,7 @@ export const authCallbackController =
         callbackParams,
         {
           state,
+          code_verifier,
         }
       );
       req.session.tokenSet = tokenSet;
