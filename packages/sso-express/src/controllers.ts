@@ -3,8 +3,6 @@ import { BaseClient, generators, TokenSet } from "openid-client";
 import { getSessionRemainingTime, isAuthenticated } from "./helpers";
 import { SSOExpressOptions } from "./index";
 
-const code_verifier = generators.codeVerifier();
-
 const shouldBypassAuthentication = (bypassConfig, routeKey) => {
   return (
     bypassConfig && // will fail if 'null' (which has the type object)
@@ -90,7 +88,8 @@ export const loginController =
 
     const state = generators.random(32);
     req.session.oidcState = state;
-    const code_challenge = generators.codeChallenge(code_verifier);
+    req.session.codeVerifier = generators.codeVerifier();
+    const code_challenge = generators.codeChallenge(req.session.codeVerifier);
     const authUrl = client.authorizationUrl({
       state,
       code_challenge,
@@ -104,6 +103,7 @@ export const authCallbackController =
   async (req: Request, res: Response, next: NextFunction) => {
     const state = req.query.state as string;
     const cachedState = req.session.oidcState;
+    const codeVerifier = req.session.codeVerifier;
     delete req.session.oidcState;
     if (state !== cachedState) {
       console.log("Invalid OIDC state", state, cachedState);
@@ -119,7 +119,7 @@ export const authCallbackController =
         callbackParams,
         {
           state,
-          code_verifier,
+          code_verifier: codeVerifier,
         }
       );
       req.session.tokenSet = tokenSet;
