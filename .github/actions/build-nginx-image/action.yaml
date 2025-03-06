@@ -46,7 +46,7 @@ runs:
     - name: Build image
       uses: docker/build-push-action@v5
       with:
-        context: cas-nginx
+        context: nginx-sidecar
         builder: ${{ steps.buildx.outputs.name }}
         push: true
         file: nginx-sidecar/Dockerfile
