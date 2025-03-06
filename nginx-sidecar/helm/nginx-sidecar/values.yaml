@@ -1,5 +1,5 @@
 image:
-  repository: gcr.io/ggl-cas-storage/cas-nginx
+  repository: ghcr.io/bcgov/cas-nginx
   # Matches the chart version since the image gets tagged automatically
   # This is needed since the chart exposes a template, and cannot use .Chart.version
   tag: 0.1.4
