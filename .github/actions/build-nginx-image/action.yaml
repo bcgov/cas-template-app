@@ -46,10 +46,10 @@ runs:
     - name: Build image
       uses: docker/build-push-action@v5
       with:
-        context: ${{ inputs.context }}
+        context: cas-nginx
         builder: ${{ steps.buildx.outputs.name }}
         push: true
-        file: ${{ inputs.dockerfile_path }}
+        file: nginx-sidecar/Dockerfile
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=local,src=/tmp/.buildx-cache
