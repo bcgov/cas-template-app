@@ -36,6 +36,6 @@ jobs:
       - name: Build cas-nginx on release
         uses: ./.github/actions/build-nginx-image
         with:
-          chart_version:
+          chart_version: 0.1.16
           github_token: ${{ secrets.GITHUB_TOKEN }}
           is_chart_release: true
