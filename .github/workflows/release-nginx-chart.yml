@@ -26,6 +26,8 @@ jobs:
         uses: helm/chart-releaser-action@v1.7.0
         with:
           charts_dir: nginx-sidecar/helm
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
   build-on-release:
     needs: [release]
     runs-on: ubuntu-latest
