@@ -29,11 +29,11 @@ jobs:
   build-on-release:
     needs: [release]
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - name: Build cas-nginx on release
-          uses: ./.github/actions/build-nginx-image
-          with:
-            chart_version:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            is_chart_release: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build cas-nginx on release
+        uses: ./.github/actions/build-nginx-image
+        with:
+          chart_version:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          is_chart_release: true
