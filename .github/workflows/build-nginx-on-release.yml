@@ -17,5 +17,5 @@ jobs:
         uses: ./.github/actions/build-nginx-image
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          chart_version: ${{ steps.get_tag_name.outputs.CHART_VERSION }}
+          chart_version: 0.1.15
           is_chart_release: true

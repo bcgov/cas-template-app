@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -23,8 +23,17 @@ jobs:
         with:
           version: v3.6.2
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+        uses: helm/chart-releaser-action@v1.7.0
         with:
           charts_dir: nginx-sidecar/helm
-        env:
-          CR_TOKEN: "${{ secrets.CR_TOKEN }}" # using a personal access token here so that the build-on-relase workflow can be triggered
+  build-on-release:
+    needs: [release]
+    runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Build cas-nginx on release
+          uses: ./.github/actions/build-nginx-image
+          with:
+            chart_version:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            is_chart_release: true
