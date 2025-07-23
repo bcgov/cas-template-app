@@ -49,7 +49,7 @@ spec:
                   set -euxo pipefail;
                   if [ ! -f /tmp/.acme.sh/{{ .Values.hostName }}/fullchain.cer ]; then
                     echo "Getting a new cert from Let's Encrypt for {{ .Values.hostName }}";
-                    git clone --branch 2.8.8 https://github.com/acmesh-official/acme.sh.git /tmp/acme.sh;
+                    git clone --branch {{ .Values.acmeVersion }} https://github.com/acmesh-official/acme.sh.git /tmp/acme.sh;
                     cd /tmp/acme.sh;
                     ./acme.sh --install --force --server {{ $caServer }} -m {{ .Values.caAccountEmail }};
                     ./acme.sh --issue -d {{ .Values.hostName }} -w /tmp --server {{ $caServer }} --days {{.Values.renewalDays}} -m {{ .Values.caAccountEmail }};
