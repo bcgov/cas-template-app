@@ -79,3 +79,4 @@ spec:
 | `internalPort`     | Internal port of the nginx server, matches the port the service exposes                          | `null`                                         |
 | `port`             | Exposed port of the nginx server                                                                 | `null`                                         |
 | `acmeVersion`      | Version of the acme script to run                                                                | `3.1.1`                                        |
+| `renewSchedule`    | Cron schedule to use with renewal job, defaults to Never                                         | `0 * * * *`                                    |
