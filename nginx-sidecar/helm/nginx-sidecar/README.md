@@ -45,6 +45,8 @@ It includes:
   {{- end }}
   ```
 
+- If using a custom CA server (e.g. Entrust or Let's Encrypt - Staging), you must create a secret to point to, and specify the name and the key of that secret.
+
 - Point your service at the nginx port instead of your main pod's port
 
 ```yaml

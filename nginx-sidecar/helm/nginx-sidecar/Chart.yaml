@@ -4,4 +4,4 @@ description: A helm chart that can be used to inject an nginx sidecar pod to han
 
 type: application
 version: 0.2.0 # If this changes it must be updated in .github/workflows/release-nginx-chart.yaml
-appVersion: "1.29.0"
+appVersion: "1.29.0" #nginx version
