@@ -3,5 +3,5 @@ name: nginx-sidecar
 description: A helm chart that can be used to inject an nginx sidecar pod to handle SSL termination
 
 type: application
-version: 1.29.0 # If this changes it must be updated in .github/workflows/release-nginx-chart.yaml
-appVersion: "1.29.0"
+version: 0.2.0 # If this changes it must be updated in .github/workflows/release-nginx-chart.yaml
+appVersion: "1.29.0" #nginx version
